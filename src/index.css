@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active-link {
+    @apply font-semibold text-lg hover:text-[#8F949B]
+}
+
+.inactive-link {
+    @apply font-semibold text-lg  text-[#8F949B]
+}
