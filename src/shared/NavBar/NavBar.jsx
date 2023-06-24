@@ -64,7 +64,7 @@ const NavBar = () => {
                     </div>
                     <div className='flex items-center gap-2'>
                         {themeBtn}
-                        <button className='btn'>Login</button>
+                        <Link to='/login' className='btn'>Login</Link>
                     </div>
                 </div>
                 <hr className='shadow border mt-2' />
@@ -91,7 +91,7 @@ const NavBar = () => {
                         <h2 className='text-2xl lg:text-3xl font-semibold -mt-2 lg:-mt-4 '>Creative Lens</h2>
                     </div>
                     <div className='w-2/12 flex items-center gap-2'>
-                        <button className='btn btn-sm'>Login</button>
+                        <Link to='/login' className='btn btn-sm'>Login</Link>
                     </div>
                 </div>
                 <hr className='shadow border mt-2' />
