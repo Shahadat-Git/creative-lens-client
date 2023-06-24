@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Lottie from "lottie-react";
 import loginAnimation from '../../assets/login-animation.json'
 import { Link } from 'react-router-dom';
-import { FcGoogle } from 'react-icons/fc';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
 import { useForm } from "react-hook-form"
+import GoogleLogin from '../../shared/GoogleLogin/GoogleLogin';
 
 
 
@@ -49,7 +49,7 @@ const Login = () => {
                             }
                         </div>
                         {errors.password && <span className='text-error my-1 block'>This field is required</span>}
-                        <Link to='/register' className='mt-2 mb-5 block text-neutral-500'>Already have an account?</Link>
+                        <Link to='/register' className='mt-2 mb-5 block text-neutral-500'>Don't have an account?</Link>
                         <button className='btn btn-block'>Login</button>
                     </form>
                     <div className='flex items-center my-5'>
@@ -57,7 +57,7 @@ const Login = () => {
                         <p className='px-3'>Or</p>
                         <hr className=' border-t-2 w-full' />
                     </div>
-                    <button className='btn btn-block'><FcGoogle className='text-3xl'></FcGoogle> Login With Google</button>
+                    <GoogleLogin></GoogleLogin>
                 </div>
             </div>
         </div >
