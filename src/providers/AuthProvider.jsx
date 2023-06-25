@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import app from '../firebase/firebase.config';
+import { json } from 'react-router-dom';
 
 
 export const AuthContext = createContext();
@@ -46,6 +47,24 @@ const AuthProvider = ({ children }) => {
             console.log('auth state changed', loggedUser)
             setUser(loggedUser)
             setLoading(false);
+            if (loggedUser && loggedUser?.email) {
+                const user = {
+                    name: loggedUser.displayName,
+                    email: loggedUser.email,
+                    role: 'user'
+                }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // console.log(data)
+                    })
+            }
         })
         return () => {
             unsubscribe();

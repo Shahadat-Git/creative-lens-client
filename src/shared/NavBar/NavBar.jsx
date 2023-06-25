@@ -55,9 +55,12 @@ const NavBar = () => {
         <li><NavLink className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
         }>Classes</NavLink></li>
-        <li><NavLink className={({ isActive }) =>
-            isActive ? "active-link" : "inactive-link"
-        }>Dashboard</NavLink></li>
+
+        {
+            user?.email && <li><NavLink className={({ isActive }) =>
+                isActive ? "active-link" : "inactive-link"
+            }>Dashboard</NavLink></li>
+        }
     </>
 
     const themeBtn = <>
