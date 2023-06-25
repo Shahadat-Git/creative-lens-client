@@ -53,6 +53,23 @@ const AuthProvider = ({ children }) => {
                     email: loggedUser.email,
                     role: 'user'
                 }
+
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: user.email })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.token) {
+                            localStorage.setItem('access-token', data.token);
+                        }
+                    })
+
+
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
@@ -64,6 +81,9 @@ const AuthProvider = ({ children }) => {
                     .then(data => {
                         // console.log(data)
                     })
+            }
+            else {
+                localStorage.removeItem('access-token')
             }
         })
         return () => {
