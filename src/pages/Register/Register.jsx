@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
 import { useForm } from "react-hook-form"
 import GoogleLogin from '../../shared/GoogleLogin/GoogleLogin';
+import useAuth from '../../hooks/useAuth';
+import { toast } from 'react-hot-toast';
 
 
 
@@ -13,15 +15,39 @@ import GoogleLogin from '../../shared/GoogleLogin/GoogleLogin';
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const { signUp, updateUser } = useAuth();
     const {
         register,
         handleSubmit,
         watch,
+        reset,
         formState: { errors },
     } = useForm();
 
     const onSubmit = (data) => {
         console.log(data)
+        const { name, email, password, photo } = data;
+
+        signUp(email, password)
+            .then((result) => {
+                console.log(result.user)
+                updateUser({ displayName: name, photoURL: photo })
+                    .then(() => {
+                        // console.log('updated')
+                        toast.success('Registation Completed!')
+                        reset();
+                    })
+                    .catch((error) => {
+                        toast.error(error.message);
+                        // console.log(error.message);
+                    })
+
+            })
+            .catch((error) => {
+                // console.log(error.message)
+                toast.error(error.message);
+            })
+
     }
 
 
@@ -86,8 +112,7 @@ const Register = () => {
 
 
                         <label className='block my-2 ml-2'>Photo URL : </label>
-                        <input  {...register("photo", { required: true })} type="text" name='photo' placeholder="Photo URL" className="input input-bordered w-full " />
-                        {errors.photo && <span className='text-error my-1 block'>This field is required</span>}
+                        <input  {...register("photo")} type="text" name='photo' placeholder="Photo URL" className="input input-bordered w-full " />
 
 
                         <Link to='/login' className='mt-2 mb-5 block text-neutral-500'>Already have an account?</Link>

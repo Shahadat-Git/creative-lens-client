@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
 import { useForm } from "react-hook-form"
 import GoogleLogin from '../../shared/GoogleLogin/GoogleLogin';
+import useAuth from '../../hooks/useAuth';
+import { toast } from 'react-hot-toast';
 
 
 
@@ -12,6 +14,7 @@ import GoogleLogin from '../../shared/GoogleLogin/GoogleLogin';
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const { signIn } = useAuth();
     const {
         register,
         handleSubmit,
@@ -21,6 +24,17 @@ const Login = () => {
 
     const onSubmit = (data) => {
         console.log(data)
+        const { email, password } = data;
+
+        signIn(email, password)
+            .then((result) => {
+                console.log(result.user)
+                toast.success('Login Successfull !')
+            })
+            .catch((error) => {
+                toast.error(error.message)
+                // console.log(error.message)
+            })
     }
 
 
