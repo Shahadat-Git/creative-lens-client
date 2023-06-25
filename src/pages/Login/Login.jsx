@@ -21,14 +21,15 @@ const Login = () => {
         watch,
         formState: { errors },
     } = useForm();
+    const { user } = useAuth();
 
     const onSubmit = (data) => {
-        console.log(data)
+        // console.log(data)
         const { email, password } = data;
 
         signIn(email, password)
             .then((result) => {
-                console.log(result.user)
+                // console.log(result.user)
                 toast.success('Login Successfull !')
             })
             .catch((error) => {
@@ -64,7 +65,7 @@ const Login = () => {
                         </div>
                         {errors.password && <span className='text-error my-1 block'>This field is required</span>}
                         <Link to='/register' className='mt-2 mb-5 block text-neutral-500'>Don't have an account?</Link>
-                        <button className='btn btn-block'>Login</button>
+                        <button disabled={user} className='btn btn-block'>Login</button>
                     </form>
                     <div className='flex items-center my-5'>
                         <hr className=' border-t-2 w-full' />

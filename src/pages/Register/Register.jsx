@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form"
 import GoogleLogin from '../../shared/GoogleLogin/GoogleLogin';
 import useAuth from '../../hooks/useAuth';
 import { toast } from 'react-hot-toast';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 
 
@@ -23,19 +24,33 @@ const Register = () => {
         reset,
         formState: { errors },
     } = useForm();
+    const { user } = useAuth();
+    const [axiosSecure] = useAxiosSecure();
 
     const onSubmit = (data) => {
-        console.log(data)
+        // console.log(data)
         const { name, email, password, photo } = data;
 
         signUp(email, password)
             .then((result) => {
-                console.log(result.user)
+                // console.log(result.user)
                 updateUser({ displayName: name, photoURL: photo })
                     .then(() => {
                         // console.log('updated')
-                        toast.success('Registation Completed!')
-                        reset();
+                        const user = {
+                            name: name,
+                            email: email,
+                            role: 'user'
+                        }
+                        axiosSecure.post('/users', user)
+                            .then(resData => {
+                                // console.log(resData)
+                                if (resData.data.insertedId) {
+                                    toast.success('Registation Completed!')
+                                    reset();
+                                }
+                            })
+
                     })
                     .catch((error) => {
                         toast.error(error.message);
@@ -116,7 +131,7 @@ const Register = () => {
 
 
                         <Link to='/login' className='mt-2 mb-5 block text-neutral-500'>Already have an account?</Link>
-                        <button className='btn btn-block'>Register</button>
+                        <button disabled={user} className='btn btn-block'>Register</button>
                     </form>
                     <div className='flex items-center my-5'>
                         <hr className=' border-t-2 w-full' />
