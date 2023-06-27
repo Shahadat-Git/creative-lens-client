@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import useUserStatus from '../hooks/useUserStatus';
 
 
@@ -18,7 +18,7 @@ const Dashboard = () => {
     </>
 
     const instructorLinks = <>
-        <li><NavLink to='/' className={({ isActive }) =>
+        <li><NavLink to='/dashboard/add-class' className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
         }>Add a Class</NavLink></li>
         <li><NavLink to='/instructors' className={({ isActive }) =>
@@ -62,6 +62,9 @@ const Dashboard = () => {
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                    <li><NavLink to='/dashboard' className={({ isActive }) =>
+                        isActive ? "active-link" : "inactive-link"
+                    }>Dashboard Home</NavLink></li>
                     {
                         user === 'student' && studentLinks
                     }
