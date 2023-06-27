@@ -6,13 +6,16 @@ import router from './routes/Router'
 import AuthProvider from './providers/AuthProvider'
 import { Toaster } from 'react-hot-toast'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import Container from './components/Container'
 
 const queryClient = new QueryClient();
+
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <div className='container mx-auto px-1 lg:px-0'>
+      <Container>
         <Toaster
           position="top-right"
           reverseOrder={false}
@@ -20,7 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <AuthProvider>
           <RouterProvider router={router} />
         </AuthProvider>
-      </div>
+      </Container>
     </QueryClientProvider>
   </React.StrictMode>,
 )

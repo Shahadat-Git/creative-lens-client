@@ -5,8 +5,8 @@ import useUserStatus from '../hooks/useUserStatus';
 
 const Dashboard = () => {
     const [status] = useUserStatus();
-
     const user = status?.status;
+
 
     const studentLinks = <>
         <li><NavLink to='/' className={({ isActive }) =>
