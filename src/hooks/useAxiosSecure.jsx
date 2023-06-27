@@ -11,7 +11,7 @@ const useAxiosSecure = () => {
 
     useEffect(() => {
         // Add a request interceptor
-        axios.interceptors.request.use(function (config) {
+        axiosSecure.interceptors.request.use(function (config) {
             // Do something before request is sent
             const token = localStorage.getItem('access-token');
             if (token) {
@@ -24,7 +24,7 @@ const useAxiosSecure = () => {
         });
 
         // Add a response interceptor
-        axios.interceptors.response.use(function (response) {
+        axiosSecure.interceptors.response.use(function (response) {
             // Any status code that lie within the range of 2xx cause this function to trigger
             // Do something with response data
             return response;

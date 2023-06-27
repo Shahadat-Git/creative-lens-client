@@ -1,8 +1,54 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Login from '../pages/Login/Login';
+import { NavLink, Outlet } from 'react-router-dom';
+import useUserStatus from '../hooks/useUserStatus';
+
 
 const Dashboard = () => {
+    const [status] = useUserStatus();
+
+    const user = status?.status;
+
+    const studentLinks = <>
+        <li><NavLink to='/' className={({ isActive }) =>
+            isActive ? "active-link" : "inactive-link"
+        }>My Selected Classes</NavLink></li>
+        <li><NavLink to='/instructors' className={({ isActive }) =>
+            isActive ? "active-link" : "inactive-link"
+        }>My Enrolled Classes</NavLink></li>
+    </>
+
+    const instructorLinks = <>
+        <li><NavLink to='/' className={({ isActive }) =>
+            isActive ? "active-link" : "inactive-link"
+        }>Add a Class</NavLink></li>
+        <li><NavLink to='/instructors' className={({ isActive }) =>
+            isActive ? "active-link" : "inactive-link"
+        }>My Classes</NavLink></li>
+
+    </>
+
+    const adminLinks = <>
+        <li><NavLink to='/' className={({ isActive }) =>
+            isActive ? "active-link" : "inactive-link"
+        }>Manage Classes</NavLink></li>
+        <li><NavLink to='/instructors' className={({ isActive }) =>
+            isActive ? "active-link" : "inactive-link"
+        }>Manage Users</NavLink></li>
+
+    </>
+
+
+    const freeLinks = <>
+        <li><NavLink to='/' className={({ isActive }) =>
+            isActive ? "active-link" : "inactive-link"
+        }>Home</NavLink></li>
+        <li><NavLink to='/instructors' className={({ isActive }) =>
+            isActive ? "active-link" : "inactive-link"
+        }>Instructors</NavLink></li>
+        <li><NavLink className={({ isActive }) =>
+            isActive ? "active-link" : "inactive-link"
+        }>Classes</NavLink></li>
+    </>
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -16,8 +62,19 @@ const Dashboard = () => {
             <div className="drawer-side">
                 <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                 <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                    <li><a>Sidebar Item 1</a></li>
-                    <li><a>Sidebar Item 2</a></li>
+                    {
+                        user === 'student' && studentLinks
+                    }
+                    {
+                        user === 'instructor' && instructorLinks
+                    }
+                    {
+                        user === 'admin' && adminLinks
+                    }
+
+                    <hr className='border-t-2 my-5' />
+
+                    {freeLinks}
                 </ul>
 
             </div>
