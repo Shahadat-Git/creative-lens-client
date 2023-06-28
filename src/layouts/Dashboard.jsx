@@ -21,7 +21,7 @@ const Dashboard = () => {
         <li><NavLink to='/dashboard/add-class' className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
         }>Add a Class</NavLink></li>
-        <li><NavLink to='/instructors' className={({ isActive }) =>
+        <li><NavLink to='/dashboard/my-classes' className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
         }>My Classes</NavLink></li>
 
