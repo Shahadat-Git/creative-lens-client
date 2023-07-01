@@ -17,8 +17,10 @@ const DashboardHome = () => {
                 {
                     user &&
                     <>
-                        <p>Name :</p>
-                        <h3 className='text-xl'>{user?.displayName}</h3>
+                        <div className='flex'>
+                        <p>Name : </p>
+                        <h3 className='text-xl'> {user?.displayName}</h3>
+                        </div>
                         <p>Email :</p>
                         <h3 className='text-xl'>{user?.email}</h3>
                         <p>Role :</p>
