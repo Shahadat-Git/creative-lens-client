@@ -2,6 +2,7 @@ import React from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from 'react-query';
 import useAuth from '../../../hooks/useAuth';
+import { Link } from 'react-router-dom';
 
 const MyClasses = () => {
     const { user } = useAuth();
@@ -33,7 +34,7 @@ const MyClasses = () => {
                                 {
                                     item?.status === 'denied' && <p className='text-lg font-semibold'> Feedback : <span className=''>{item?.feedback}</span></p>
                                 }
-                                <button className='btn bg-orange-200 hover:bg-orange-300'>Update</button>
+                                <Link to={`/dashboard/my-classes/update/${item._id}`} className='btn bg-orange-200 hover:bg-orange-300'>Update</Link>
                             </div>
                         </div>
                     </div>)

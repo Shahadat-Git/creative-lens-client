@@ -16,7 +16,7 @@ const ManageClasses = () => {
             return res.data;
         }
     })
-    console.log(classes)
+    // console.log(classes)
     const handleApproved = (id) => {
         // console.log(id)
         axiosSecure.patch(`/class/${id}`, { status: 'approved' })
@@ -38,7 +38,7 @@ const ManageClasses = () => {
     const handleDenied = (id) => {
         axiosSecure.patch(`/class/${id}`, { status: 'denied' })
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({
                         position: 'center',
@@ -54,7 +54,7 @@ const ManageClasses = () => {
 
     const handleFeedback = (id) => {
         setClassData('');
-        console.log(id)
+        // console.log(id)
         setClassId(id)
         axiosSecure.get(`/class/${id}`)
             .then(res => {
@@ -65,10 +65,19 @@ const ManageClasses = () => {
     }
     const handleFeedbackModal = (event) => {
         const feedback = event.target.parentNode.firstChild.value;
-        console.log(feedback);
+        // console.log(feedback);
         axiosSecure.put(`/class/${classId}`, { feedback: feedback })
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
+                if (res.data.modifiedCount > 0) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Updated Feedback',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
             })
     }
     return (
