@@ -17,14 +17,12 @@ const DashboardHome = () => {
                 {
                     user &&
                     <>
-                        <div className='flex'>
-                        <p>Name : </p>
-                        <h3 className='text-xl'> {user?.displayName}</h3>
+                        <div className='flex flex-col items-center gap-2'>
+                            <h3 className='text-xl'> Name : {user?.displayName}</h3>
+                            <h3 className='text-xl'>Email : {user?.email}</h3>
+                            <h3 className='text-xl'>Role : {status?.status}</h3>
                         </div>
-                        <p>Email :</p>
-                        <h3 className='text-xl'>{user?.email}</h3>
-                        <p>Role :</p>
-                        <h3 className='text-xl'>{status?.status}</h3></>
+                    </>
                 }
             </div>
         </div>
