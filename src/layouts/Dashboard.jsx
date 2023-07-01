@@ -28,10 +28,10 @@ const Dashboard = () => {
     </>
 
     const adminLinks = <>
-        <li><NavLink to='/' className={({ isActive }) =>
+        <li><NavLink to='/dashboard/manage-classes' className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
         }>Manage Classes</NavLink></li>
-        <li><NavLink to='/instructors' className={({ isActive }) =>
+        <li><NavLink to='/dashboard/manage-users' className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
         }>Manage Users</NavLink></li>
 
