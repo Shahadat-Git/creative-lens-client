@@ -9,10 +9,10 @@ const Dashboard = () => {
 
 
     const studentLinks = <>
-        <li><NavLink to='/' className={({ isActive }) =>
+        <li><NavLink to='/dashboard/my-selected-classes' className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
         }>My Selected Classes</NavLink></li>
-        <li><NavLink to='/instructors' className={({ isActive }) =>
+        <li><NavLink to='/dashboard/my-enrolled-classes' className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
         }>My Enrolled Classes</NavLink></li>
     </>

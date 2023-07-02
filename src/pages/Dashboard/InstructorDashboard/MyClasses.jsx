@@ -3,6 +3,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from 'react-query';
 import useAuth from '../../../hooks/useAuth';
 import { Link } from 'react-router-dom';
+import noImg from '../../../assets/no-img.jpg'
 
 const MyClasses = () => {
     const { user } = useAuth();
@@ -25,7 +26,7 @@ const MyClasses = () => {
                     classes.length > 0 && classes.map(item => <div key={item._id}>
                         <div className="w-full bg-base-100 shadow-xl lg:flex rounded items-center">
                             <div className="p-5 lg:w-4/12">
-                                <img className='w-full rounded-xl' src={item.img} />
+                                <img className='w-full rounded-xl' src={item.img || noImg} />
                             </div>
                             <div className="card-body lg:w-8/12 ">
                                 <h2 className="text-2xl font-semibold">Name : {item.name}</h2>

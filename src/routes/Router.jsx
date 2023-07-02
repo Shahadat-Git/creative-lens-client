@@ -13,6 +13,9 @@ import ManageUsers from "../pages/Dashboard/AdminDashboard/ManageUsers";
 import ManageClasses from "../pages/Dashboard/AdminDashboard/ManageClasses";
 import AdminRoute from "./AdminRoute";
 import MyClassUpdate from "../pages/Dashboard/InstructorDashboard/MyClassUpdate";
+import MySelectedClasses from "../pages/Dashboard/StudentDashboard/MySelectedClasses";
+import StudentRoute from "./StudentRoute";
+import MyEnrolledClasses from "../pages/Dashboard/StudentDashboard/MyEnrolledClasses";
 
 
 const router = createBrowserRouter([
@@ -66,6 +69,16 @@ const router = createBrowserRouter([
                 path: 'my-classes/update/:id',
                 element: <InstructorRoute><MyClassUpdate></MyClassUpdate></InstructorRoute>
             },
+
+            // student routes
+            {
+                path: 'my-selected-classes',
+                element: <StudentRoute><MySelectedClasses></MySelectedClasses></StudentRoute>
+            },
+            {
+                path: 'my-enrolled-classes',
+                element: <StudentRoute><MyEnrolledClasses></MyEnrolledClasses></StudentRoute>
+            }
         ]
     }
 ])

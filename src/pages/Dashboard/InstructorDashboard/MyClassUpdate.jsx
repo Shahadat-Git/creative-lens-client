@@ -21,12 +21,11 @@ const MyClassUpdate = () => {
     const onSubmit = (data) => {
         // console.log(data)
 
-        const { className, classImage, price, seats } = data;
+        const { className,  price, seats } = data;
 
 
         const updatedClass = {
             name: className,
-            img: classImage,
             seats,
             price,
         }

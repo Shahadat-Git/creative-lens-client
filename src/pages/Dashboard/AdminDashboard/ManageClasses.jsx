@@ -3,6 +3,7 @@ import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from 'react-query';
 import Swal from 'sweetalert2';
+import noImg from '../../../assets/no-img.jpg'
 
 const ManageClasses = () => {
     const { user } = useAuth();
@@ -89,9 +90,9 @@ const ManageClasses = () => {
                 {
                     classes.length > 0 && classes.map(item => <div key={item._id}>
                         <div className="card w-full bg-base-100 shadow-xl">
-                            <figure className="px-10 pt-10">
-                                <img src={item.img} alt="Shoes" className="rounded-xl" />
-                            </figure>
+                            <div className="p-10">
+                                <img  src={item.img || noImg} className=" rounded-xl border-2 h-72 w-full object-cover" />
+                            </div>
                             <div className="card-body ">
                                 <h2 className="text-xl font-semibold">Name : {item.name}</h2>
                                 <p className="text-md font-semibold"> Instructor name : {item.instructorName}</p>
