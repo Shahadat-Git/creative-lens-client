@@ -45,7 +45,7 @@ const Dashboard = () => {
         <li><NavLink to='/instructors' className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
         }>Instructors</NavLink></li>
-        <li><NavLink className={({ isActive }) =>
+        <li><NavLink to='/classes' className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
         }>Classes</NavLink></li>
     </>

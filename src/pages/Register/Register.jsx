@@ -40,7 +40,8 @@ const Register = () => {
                         const user = {
                             name: name,
                             email: email,
-                            role: 'student'
+                            role: 'student',
+                            img: photo,
                         }
                         axiosSecure.post('/users', user)
                             .then(resData => {

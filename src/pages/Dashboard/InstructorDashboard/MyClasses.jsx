@@ -3,7 +3,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from 'react-query';
 import useAuth from '../../../hooks/useAuth';
 import { Link } from 'react-router-dom';
-import noImg from '../../../assets/no-img.jpg'
+import noImg from '../../../assets/no-img.jpg';
 
 const MyClasses = () => {
     const { user } = useAuth();
@@ -21,7 +21,7 @@ const MyClasses = () => {
             <div className='flex justify-center items-center'>
                 <h3 className='text-xl mt-5 lg:text-5xl shadow-lg inline-block px-10 py-1 lg:py-4 rounded-full'>My Classes</h3>
             </div>
-            <div className='grid grid-cols-1 gap-5 px-5 my-5'>
+            <div className='grid grid-cols-1  gap-5 px-5 my-5'>
                 {
                     classes.length > 0 && classes.map(item => <div key={item._id}>
                         <div className="w-full bg-base-100 shadow-xl lg:flex rounded items-center">
