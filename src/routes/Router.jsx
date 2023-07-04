@@ -20,6 +20,7 @@ import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
 import Payment from "../pages/Dashboard/StudentDashboard/Payment";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import PaymentHistory from "../pages/Dashboard/StudentDashboard/PaymentHistory";
 
 
 const router = createBrowserRouter([
@@ -53,6 +54,7 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/dashboard',
@@ -95,6 +97,10 @@ const router = createBrowserRouter([
             {
                 path: 'payment/:id',
                 element: <StudentRoute><Payment></Payment></StudentRoute>
+            },
+            {
+                path: 'payment-history',
+                element: <StudentRoute><PaymentHistory></PaymentHistory></StudentRoute>
             }
         ]
     }

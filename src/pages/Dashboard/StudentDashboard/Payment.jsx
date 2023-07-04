@@ -16,7 +16,7 @@ const Payment = () => {
     useEffect(() => {
         axiosSecure.get(`/cart/${id}`)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 setCart(res.data)
             })
     }, [id])

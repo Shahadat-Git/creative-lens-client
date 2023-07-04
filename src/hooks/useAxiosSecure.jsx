@@ -1,13 +1,15 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import useAuth from './useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const axiosSecure = axios.create({
     baseURL: 'http://localhost:5000'
 })
 
 const useAxiosSecure = () => {
-    const { user } = useAuth();
+    const { user, logOut } = useAuth();
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Add a request interceptor
@@ -28,13 +30,14 @@ const useAxiosSecure = () => {
             // Any status code that lie within the range of 2xx cause this function to trigger
             // Do something with response data
             return response;
-        }, function (error) {
+        }, async function (error) {
             // Any status codes that falls outside the range of 2xx cause this function to trigger
             // Do something with response error
 
             if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-                // TODO
-                console.log('go login page')
+                // console.log('go login page')
+                await logOut();
+                navigate('/login')
             }
             return Promise.reject(error);
         });

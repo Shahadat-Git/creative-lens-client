@@ -15,6 +15,9 @@ const Dashboard = () => {
         <li><NavLink to='/dashboard/my-enrolled-classes' className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
         }>My Enrolled Classes</NavLink></li>
+        <li><NavLink to='/dashboard/payment-history' className={({ isActive }) =>
+            isActive ? "active-link" : "inactive-link"
+        }>Payment History</NavLink></li>
     </>
 
     const instructorLinks = <>
