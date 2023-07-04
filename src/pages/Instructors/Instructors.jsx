@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import noImg from '../../assets/no-img.jpg';
 import { FaUserAlt } from 'react-icons/fa';
-import { HiMail } from 'react-icons/Hi';
+import { HiMail } from 'react-icons/hi';
 
 
 const Instructors = () => {

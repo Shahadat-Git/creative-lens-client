@@ -19,14 +19,18 @@ const Classes = () => {
         getData();
     }, [])
 
-    const handleSelect = (id) => {
+    const handleSelect = (item) => {
         if (!user) {
             return toast.error('Please log in before selection the course');
         }
         // console.log(id)
         const cartData = {
-            classId: id,
-            email: user.email,
+            classId: item?._id,
+            img: item?.img,
+            name: item?.name,
+            instructorName: item?.instructorName,
+            price: item?.price,
+            email: user?.email,
         }
         axiosSecure.post('/carts', cartData)
             .then(res => {
@@ -53,7 +57,7 @@ const Classes = () => {
                                 <p className="text-md font-semibold"> Instructor name : {item.instructorName}</p>
                                 <p className="text-md font-semibold"> Available seats : {item.seats}</p>
                                 <p className="text-md font-semibold"> Price : {item.price}</p>
-                                <button onClick={() => handleSelect(item._id)} disabled={item.seats == 0 || status?.status === 'admin' || status?.status === 'instructor' && true} className='btn btn-success hover:bg-green-600'>Select</button>
+                                <button onClick={() => handleSelect(item)} disabled={item.seats == 0 || status?.status === 'admin' || status?.status === 'instructor' && true} className='btn btn-success hover:bg-green-600'>Select</button>
                             </div>
                         </div>
                     </div>)

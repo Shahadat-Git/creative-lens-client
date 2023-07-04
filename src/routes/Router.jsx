@@ -18,12 +18,15 @@ import StudentRoute from "./StudentRoute";
 import MyEnrolledClasses from "../pages/Dashboard/StudentDashboard/MyEnrolledClasses";
 import Instructors from "../pages/Instructors/Instructors";
 import Classes from "../pages/Classes/Classes";
+import Payment from "../pages/Dashboard/StudentDashboard/Payment";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -88,6 +91,10 @@ const router = createBrowserRouter([
             {
                 path: 'my-enrolled-classes',
                 element: <StudentRoute><MyEnrolledClasses></MyEnrolledClasses></StudentRoute>
+            },
+            {
+                path: 'payment/:id',
+                element: <StudentRoute><Payment></Payment></StudentRoute>
             }
         ]
     }
