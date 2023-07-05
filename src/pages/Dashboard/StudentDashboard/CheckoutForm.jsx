@@ -72,7 +72,11 @@ const CheckoutForm = ({ cart, price }) => {
 
         if (confirmError) {
             console.log(confirmError);
+            setCardError(confirmError.code);
         }
+        else {
+            setCardError('');
+        };
 
         // console.log('payment intent', paymentIntent)
         setProcessing(false)
@@ -87,6 +91,8 @@ const CheckoutForm = ({ cart, price }) => {
                 cartItemId: cart._id,
                 classId: cart.classId,
                 className: cart.name,
+                instructorName: cart.instructorName,
+                instructorEmail: cart.instructorEmail,
                 classImg: cart.img,
             }
             axiosSecure.post('/payments', payment)

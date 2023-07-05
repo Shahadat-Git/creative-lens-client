@@ -30,6 +30,7 @@ const Classes = () => {
             img: item?.img,
             name: item?.name,
             instructorName: item?.instructorName,
+            instructorEmail: item?.instructorEmail,
             price: item?.price,
             email: user?.email,
         }

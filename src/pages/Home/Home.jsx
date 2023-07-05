@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import Slider from './Slider';
+import PopularClasses from './PopularClasses';
 
 const Home = () => {
     return (
@@ -9,6 +10,7 @@ const Home = () => {
                 <title>Creative Lens | Home</title>
             </Helmet>
             <Slider></Slider>
+            <PopularClasses></PopularClasses>
         </div>
     );
 };

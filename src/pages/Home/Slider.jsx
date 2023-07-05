@@ -10,7 +10,7 @@ import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 const Slider = () => {
     const swiperRef = useRef();
     return (
-        <div className="relative">
+        <div className="relative mt-5">
             <Swiper
                 modules={[Pagination, Navigation, Autoplay, A11y]}
                 slidesPerView={1}

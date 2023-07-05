@@ -38,7 +38,8 @@ const AddClass = () => {
                         instructorEmail,
                         seats,
                         price,
-                        status: 'pending'
+                        status: 'pending',
+                        enrolled: 0,
                     }
 
                     axiosSecure.post('/classes', classData)
@@ -66,7 +67,7 @@ const AddClass = () => {
             <Helmet>
                 <title>Dashboard | Add Class</title>
             </Helmet>
-            
+
             <div className='flex justify-center items-center'>
                 <h3 className='text-xl mt-5 lg:text-5xl shadow-lg inline-block px-10 py-1 lg:py-4 rounded-full'>Add New Class</h3>
             </div>
