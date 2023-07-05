@@ -38,41 +38,43 @@ const MySelectedClasses = () => {
             <div className='flex justify-center items-center'>
                 <h3 className='text-xl mt-5 lg:text-5xl shadow-lg inline-block px-10 py-1 lg:py-4 rounded-full'>Selected classes</h3>
             </div>
-            <div className="overflow-x-auto">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            carts.map(item => <tr key={item._id}>
-                                <td>
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src={item.img || noImg} alt="" />
+            <div className="overflow-x-auto mt-5">
+                {
+                    carts.length > 0 ? <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                carts.map(item => <tr key={item._id}>
+                                    <td>
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src={item.img || noImg} alt="" />
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    {item.name}
-                                </td>
-                                <td>${item.price}</td>
-                                <th>
-                                    <div className='flex gap-2'>
-                                        <button onClick={() => handleDelete(item._id)} className="btn  btn-xs btn-error">Delete</button>
-                                        <Link to={`/dashboard/payment/${item._id}`} className="btn btn-success btn-xs">Pay</Link>
-                                    </div>
-                                </th>
-                            </tr>)
-                        }
-                    </tbody>
+                                    </td>
+                                    <td>
+                                        {item.name}
+                                    </td>
+                                    <td>${item.price}</td>
+                                    <th>
+                                        <div className='flex gap-2'>
+                                            <button onClick={() => handleDelete(item._id)} className="btn  btn-xs btn-error">Delete</button>
+                                            <Link to={`/dashboard/payment/${item._id}`} className="btn btn-success btn-xs">Pay</Link>
+                                        </div>
+                                    </th>
+                                </tr>)
+                            }
+                        </tbody>
 
-                </table>
+                    </table> : <h3 className='text-center text-xl'>No Classes Found</h3>
+                }
             </div>
         </div>
     );

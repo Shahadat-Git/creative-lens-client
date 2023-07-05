@@ -53,8 +53,8 @@ const Classes = () => {
                 {
                     classes.length > 0 && classes.map(item => <div key={item._id}>
                         <div className={`${item.seats == 0 ? 'bg-red-600' : 'bg-base-100 '} card w-full shadow-xl `}>
-                            <div className="p-10">
-                                <img src={item.img || noImg} className=" rounded-xl border-2 h-72 w-full object-cover" />
+                            <div className="px-10 pt-10">
+                                <img src={item.img || noImg} className=" rounded-xl border-2 h-72 w-full" />
                             </div>
                             <div className="card-body ">
                                 <h2 className="text-xl font-semibold">Name : {item.name}</h2>

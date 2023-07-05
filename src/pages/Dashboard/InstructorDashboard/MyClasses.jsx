@@ -27,7 +27,7 @@ const MyClasses = () => {
             </div>
             <div className='grid grid-cols-1  gap-5 px-5 my-5'>
                 {
-                    classes.length > 0 && classes.map(item => <div key={item._id}>
+                    classes?.length > 0 ? classes.map(item => <div key={item._id}>
                         <div className="w-full bg-base-100 shadow-xl lg:flex rounded items-center">
                             <div className="p-5 lg:w-4/12">
                                 <img className='w-full rounded-xl' src={item.img || noImg} />
@@ -43,6 +43,7 @@ const MyClasses = () => {
                             </div>
                         </div>
                     </div>)
+                        : <h3 className='text-center text-xl'>No Classes Found</h3>
                 }
             </div>
         </div>

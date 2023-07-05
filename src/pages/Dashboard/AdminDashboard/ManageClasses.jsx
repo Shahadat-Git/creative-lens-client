@@ -92,7 +92,7 @@ const ManageClasses = () => {
             </div>
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 px-5 my-10'>
                 {
-                    classes.length > 0 && classes.map(item => <div key={item._id}>
+                    classes.length > 0 ? classes.map(item => <div key={item._id}>
                         <div className="card w-full bg-base-100 shadow-xl">
                             <div className="p-10">
                                 <img src={item.img || noImg} className=" rounded-xl border-2 h-72 w-full object-cover" />
@@ -110,6 +110,7 @@ const ManageClasses = () => {
                             </div>
                         </div>
                     </div>)
+                    : <h3 className='text-center text-xl'>No Classes Found</h3>
                 }
             </div>
 
