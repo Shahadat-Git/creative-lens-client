@@ -5,6 +5,7 @@ import { useQuery } from 'react-query';
 import noImg from '../../../assets/no-img.jpg';
 import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const MySelectedClasses = () => {
     const { user } = useAuth();
@@ -31,6 +32,9 @@ const MySelectedClasses = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Dashboard | Selected Classes</title>
+            </Helmet>
             <div className='flex justify-center items-center'>
                 <h3 className='text-xl mt-5 lg:text-5xl shadow-lg inline-block px-10 py-1 lg:py-4 rounded-full'>Selected classes</h3>
             </div>

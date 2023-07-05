@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Lottie from "lottie-react";
 import signUpAnimation from '../../assets/sign-up-animation.json'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
 import { useForm } from "react-hook-form"
 import GoogleLogin from '../../shared/GoogleLogin/GoogleLogin';
 import useAuth from '../../hooks/useAuth';
 import { toast } from 'react-hot-toast';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -26,6 +27,12 @@ const Register = () => {
     } = useForm();
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from.pathname || '/';
+
 
     const onSubmit = (data) => {
         // console.log(data)
@@ -47,7 +54,8 @@ const Register = () => {
                             .then(resData => {
                                 // console.log(resData)
                                 if (resData.data.insertedId) {
-                                    toast.success('Registation Completed!')
+                                    toast.success('Registation Completed!');
+                                    navigate(from, { replace: true });
                                     reset();
                                 }
                             })
@@ -71,6 +79,9 @@ const Register = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Creative Lens | Register</title>
+            </Helmet>
             <h2 className='text-5xl text-center my-5 font-semibold'>Please Register</h2>
             <div className='lg:flex items-center'>
                 <div className='hidden lg:block lg:w-1/2'>

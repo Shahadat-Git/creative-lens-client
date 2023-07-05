@@ -4,6 +4,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
 import noImg from '../../../assets/no-img.jpg'
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const ManageUsers = () => {
     const { user } = useAuth();
@@ -53,6 +54,9 @@ const ManageUsers = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Dashboard | Manage Users</title>
+            </Helmet>
             <div className='flex justify-center'>
                 <h3 className='text-xl mt-5 lg:text-5xl shadow-lg inline-block px-10 py-1 lg:py-4 rounded-full'>Manage Users</h3>
             </div>

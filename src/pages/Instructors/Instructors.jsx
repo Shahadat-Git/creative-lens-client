@@ -3,6 +3,7 @@ import useAxiosSecure from '../../hooks/useAxiosSecure';
 import noImg from '../../assets/no-img.jpg';
 import { FaUserAlt } from 'react-icons/fa';
 import { HiMail } from 'react-icons/hi';
+import { Helmet } from 'react-helmet-async';
 
 
 const Instructors = () => {
@@ -19,6 +20,9 @@ const Instructors = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Creative Lens | Instructors</title>
+            </Helmet>
             <div className='flex justify-center items-center'>
                 <h3 className='text-xl mt-5 lg:text-5xl shadow-lg inline-block px-10 py-1 lg:py-4 rounded-full'>Instructors</h3>
             </div>
@@ -30,9 +34,9 @@ const Instructors = () => {
                                 <img className='w-full rounded-xl' src={item.img || noImg} />
                             </div>
                             <div className="card-body lg:w-8/12 ">
-                                <p className="text-lg font-semibold flex items-center gap-2"><FaUserAlt></FaUserAlt> {item.name}</p>
-                                
-                                <p className='text-lg font-semibold flex items-center gap-2'> <HiMail></HiMail>{item.email}</p>
+                                <p className="text-md font-semibold flex items-center gap-2 flex-wrap"><FaUserAlt></FaUserAlt> {item.name}</p>
+
+                                <p className='text-md font-semibold flex items-center gap-2 flex-wrap'> <HiMail></HiMail>{item.email}</p>
 
                             </div>
                         </div>

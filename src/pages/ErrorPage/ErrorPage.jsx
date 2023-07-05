@@ -2,12 +2,16 @@ import React from 'react';
 import { useNavigate, useRouteError } from 'react-router-dom';
 import errorImg from '../../assets/error.json'
 import Lottie from "lottie-react";
+import { Helmet } from 'react-helmet-async';
 
 const ErrorPage = () => {
     const { status, statusText, error } = useRouteError();
     const navigate = useNavigate();
     return (
         <div className='w-full p-20 h-screen'>
+            <Helmet>
+                <title>Creative Lens | Error</title>
+            </Helmet>
             <Lottie style={{ height: '50vh', width: '100%' }} animationData={errorImg} loop={true} />
 
 

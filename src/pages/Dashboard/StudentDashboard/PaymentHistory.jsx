@@ -3,6 +3,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from 'react-query';
 import useAuth from '../../../hooks/useAuth';
 import noImg from '../../../assets/no-img.jpg';
+import { Helmet } from 'react-helmet-async';
 
 const PaymentHistory = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -17,6 +18,9 @@ const PaymentHistory = () => {
     })
     return (
         <div>
+            <Helmet>
+                <title>Dashboard | Payment History</title>
+            </Helmet>
             <div className='flex justify-center items-center'>
                 <h3 className='text-xl mt-5 lg:text-5xl shadow-lg inline-block px-10 py-1 lg:py-4 rounded-full'>Payment History</h3>
             </div>

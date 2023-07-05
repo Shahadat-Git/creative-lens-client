@@ -4,6 +4,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from 'react-query';
 import Swal from 'sweetalert2';
 import noImg from '../../../assets/no-img.jpg'
+import { Helmet } from 'react-helmet-async';
 
 const ManageClasses = () => {
     const { user } = useAuth();
@@ -83,6 +84,9 @@ const ManageClasses = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Dashboard | Manage Classes</title>
+            </Helmet>
             <div className='flex justify-center items-center'>
                 <h3 className='text-xl mt-5 lg:text-5xl shadow-lg inline-block px-10 py-1 lg:py-4 rounded-full'>Manage Classes</h3>
             </div>
@@ -91,7 +95,7 @@ const ManageClasses = () => {
                     classes.length > 0 && classes.map(item => <div key={item._id}>
                         <div className="card w-full bg-base-100 shadow-xl">
                             <div className="p-10">
-                                <img  src={item.img || noImg} className=" rounded-xl border-2 h-72 w-full object-cover" />
+                                <img src={item.img || noImg} className=" rounded-xl border-2 h-72 w-full object-cover" />
                             </div>
                             <div className="card-body ">
                                 <h2 className="text-xl font-semibold">Name : {item.name}</h2>

@@ -4,6 +4,7 @@ import { useQuery } from 'react-query';
 import useAuth from '../../../hooks/useAuth';
 import { Link } from 'react-router-dom';
 import noImg from '../../../assets/no-img.jpg';
+import { Helmet } from 'react-helmet-async';
 
 const MyClasses = () => {
     const { user } = useAuth();
@@ -18,6 +19,9 @@ const MyClasses = () => {
     // console.log(classes)
     return (
         <div>
+            <Helmet>
+                <title>Dashboard | My Classes</title>
+            </Helmet>
             <div className='flex justify-center items-center'>
                 <h3 className='text-xl mt-5 lg:text-5xl shadow-lg inline-block px-10 py-1 lg:py-4 rounded-full'>My Classes</h3>
             </div>

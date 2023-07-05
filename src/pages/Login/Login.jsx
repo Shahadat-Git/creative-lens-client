@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import Lottie from "lottie-react";
 import loginAnimation from '../../assets/login-animation.json'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
 import { useForm } from "react-hook-form"
 import GoogleLogin from '../../shared/GoogleLogin/GoogleLogin';
 import useAuth from '../../hooks/useAuth';
 import { toast } from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -22,6 +23,10 @@ const Login = () => {
         formState: { errors },
     } = useForm();
     const { user } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
 
     const onSubmit = (data) => {
         // console.log(data)
@@ -30,7 +35,8 @@ const Login = () => {
         signIn(email, password)
             .then((result) => {
                 // console.log(result.user)
-                toast.success('Login Successfull !')
+                toast.success('Login Successfull !');
+                navigate(from, { replace: true });
             })
             .catch((error) => {
                 toast.error(error.message)
@@ -43,6 +49,9 @@ const Login = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Creative Lens | Login</title>
+            </Helmet>
             <h2 className='text-5xl text-center my-5 font-semibold'>Please Login</h2>
             <div className='lg:flex items-center'>
                 <div className='hidden lg:block lg:w-1/2'>

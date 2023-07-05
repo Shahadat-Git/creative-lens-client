@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import useUserStatus from '../hooks/useUserStatus';
+import NavBar from '../shared/NavBar/NavBar';
+import Footer from '../shared/Footer/Footer';
+import { BiSolidAddToQueue, BiSolidSelectMultiple, BiHistory } from 'react-icons/bi'
+import { AiFillCrown, AiFillHome } from 'react-icons/ai'
+import { MdManageAccounts, MdOutlineManageHistory, MdPaid } from 'react-icons/md'
 
 
 const Dashboard = () => {
@@ -11,32 +16,32 @@ const Dashboard = () => {
     const studentLinks = <>
         <li><NavLink to='/dashboard/my-selected-classes' className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
-        }>My Selected Classes</NavLink></li>
+        }><BiSolidSelectMultiple></BiSolidSelectMultiple>My Selected Classes</NavLink></li>
         <li><NavLink to='/dashboard/my-enrolled-classes' className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
-        }>My Enrolled Classes</NavLink></li>
+        }><MdPaid></MdPaid> My Enrolled Classes</NavLink></li>
         <li><NavLink to='/dashboard/payment-history' className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
-        }>Payment History</NavLink></li>
+        }><BiHistory></BiHistory>Payment History</NavLink></li>
     </>
 
     const instructorLinks = <>
         <li><NavLink to='/dashboard/add-class' className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
-        }>Add a Class</NavLink></li>
+        }><BiSolidAddToQueue></BiSolidAddToQueue> Add a Class</NavLink></li>
         <li><NavLink to='/dashboard/my-classes' className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
-        }>My Classes</NavLink></li>
+        }><AiFillCrown></AiFillCrown> My Classes</NavLink></li>
 
     </>
 
     const adminLinks = <>
         <li><NavLink to='/dashboard/manage-classes' className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
-        }>Manage Classes</NavLink></li>
+        }><MdOutlineManageHistory></MdOutlineManageHistory> Manage Classes</NavLink></li>
         <li><NavLink to='/dashboard/manage-users' className={({ isActive }) =>
             isActive ? "active-link" : "inactive-link"
-        }>Manage Users</NavLink></li>
+        }><MdManageAccounts></MdManageAccounts> Manage Users</NavLink></li>
 
     </>
 
@@ -53,36 +58,41 @@ const Dashboard = () => {
         }>Classes</NavLink></li>
     </>
     return (
-        <div className="drawer lg:drawer-open">
-            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
-                <div className=' flex flex-col items-center justify-center'>
-                    <label htmlFor="my-drawer-2" className="btn drawer-button lg:hidden mt-5">Dashboard Menu</label>
+        <>
+            <NavBar></NavBar>
+            <div className="drawer lg:drawer-open">
+                <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+                <div className="drawer-content">
+                    <div className=' flex flex-col items-center justify-center'>
+                        <label htmlFor="my-drawer-2" className="btn drawer-button lg:hidden mt-5">Dashboard Menu</label>
+                    </div>
+
+                    <Outlet></Outlet>
                 </div>
+                <div className="drawer-side">
+                    <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+                    <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                        <h3 className='text-xl border-b-2 font-semibold mb-5 p-4 text-center'>Dashboard  Menu</h3>
+                        <li><Link to='/dashboard' className='inactive-link'><AiFillHome></AiFillHome>Dashboard Home</Link></li>
+                        {
+                            user === 'student' && studentLinks
+                        }
+                        {
+                            user === 'instructor' && instructorLinks
+                        }
+                        {
+                            user === 'admin' && adminLinks
+                        }
 
-                <Outlet></Outlet>
+                        {/* <hr className='border-t-2 my-5' />
+
+                        {freeLinks} */}
+                    </ul>
+
+                </div>
             </div>
-            <div className="drawer-side">
-                <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                    <li><Link to='/dashboard' className='inactive-link'>Dashboard Home</Link></li>
-                    {
-                        user === 'student' && studentLinks
-                    }
-                    {
-                        user === 'instructor' && instructorLinks
-                    }
-                    {
-                        user === 'admin' && adminLinks
-                    }
-
-                    <hr className='border-t-2 my-5' />
-
-                    {freeLinks}
-                </ul>
-
-            </div>
-        </div>
+            <Footer></Footer>
+        </>
     );
 };
 

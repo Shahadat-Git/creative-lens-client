@@ -4,6 +4,7 @@ import noImg from '../../assets/no-img.jpg';
 import useUserStatus from '../../hooks/useUserStatus';
 import useAuth from '../../hooks/useAuth';
 import { toast } from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const Classes = () => {
     const [classes, setClasses] = useState([]);
@@ -42,6 +43,9 @@ const Classes = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Creative Lens | Classes</title>
+            </Helmet>
             <div className='flex justify-center items-center'>
                 <h3 className='text-xl mt-5 lg:text-5xl shadow-lg inline-block px-10 py-1 lg:py-4 rounded-full'>All Classes</h3>
             </div>

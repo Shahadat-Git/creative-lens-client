@@ -2,6 +2,7 @@ import React from 'react';
 import useAuth from '../../../hooks/useAuth';
 import profile from '../../../assets/profile.png'
 import useUserStatus from '../../../hooks/useUserStatus';
+import { Helmet } from 'react-helmet-async';
 
 
 const DashboardHome = () => {
@@ -9,6 +10,9 @@ const DashboardHome = () => {
     const [status] = useUserStatus();
     return (
         <div className='mt-5'>
+            <Helmet>
+                <title>Dashboard | Home</title>
+            </Helmet>
             <div className='flex justify-center'>
                 <h3 className='text-2xl mt-5 lg:text-5xl shadow-lg inline-block px-10 py-2 rounded-full'>Dashboard</h3>
             </div>

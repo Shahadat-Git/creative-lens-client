@@ -4,6 +4,7 @@ import { useQuery } from 'react-query';
 import useAuth from '../../../hooks/useAuth';
 import noImg from '../../../assets/no-img.jpg';
 import moment from 'moment/moment';
+import { Helmet } from 'react-helmet-async';
 
 const MyEnrolledClasses = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -18,6 +19,9 @@ const MyEnrolledClasses = () => {
     })
     return (
         <div>
+            <Helmet>
+                <title>Dashboard | Enrolled Classes</title>
+            </Helmet>
             <div className='flex justify-center items-center'>
                 <h3 className='text-xl mt-5 lg:text-5xl shadow-lg inline-block px-10 py-1 lg:py-4 rounded-full'>Enrolled Classes</h3>
             </div>

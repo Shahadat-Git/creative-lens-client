@@ -4,6 +4,7 @@ import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const MyClassUpdate = () => {
     const {
@@ -21,7 +22,7 @@ const MyClassUpdate = () => {
     const onSubmit = (data) => {
         // console.log(data)
 
-        const { className,  price, seats } = data;
+        const { className, price, seats } = data;
 
 
         const updatedClass = {
@@ -51,8 +52,13 @@ const MyClassUpdate = () => {
 
     return (
         <div>
-            <h2 className='text-5xl text-center my-5 font-semibold'>Update Class</h2>
-            <div className='lg:flex justify-center'>
+            <Helmet>
+                <title>Dashboard | Update Class</title>
+            </Helmet>
+            <div className='flex justify-center items-center'>
+                <h3 className='text-xl mt-5 lg:text-5xl shadow-lg inline-block px-10 py-1 lg:py-4 rounded-full'>Update Class</h3>
+            </div>
+            <div className='lg:flex justify-center mt-5'>
                 <div className='lg:w-8/12 shadow-2xl px-8 py-5 lg:px-16 lg:py-10 rounded'>
                     <form onSubmit={handleSubmit(onSubmit)}>
 

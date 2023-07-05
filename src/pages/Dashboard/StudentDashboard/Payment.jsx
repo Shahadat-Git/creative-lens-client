@@ -4,6 +4,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from './CheckoutForm';
 import { loadStripe } from '@stripe/stripe-js';
+import { Helmet } from 'react-helmet-async';
 
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
@@ -22,6 +23,9 @@ const Payment = () => {
     }, [id])
     return (
         <div>
+            <Helmet>
+                <title>Dashboard | Payment</title>
+            </Helmet>
             <div className='flex justify-center items-center'>
                 <h3 className='text-xl mt-5 lg:text-5xl shadow-lg inline-block px-10 py-1 lg:py-4 rounded-full'>Payment</h3>
             </div>
