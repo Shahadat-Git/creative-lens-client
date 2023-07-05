@@ -10,6 +10,7 @@ const MyClassUpdate = () => {
     const {
         register,
         handleSubmit,
+        reset,
         watch,
         formState: { errors },
     } = useForm();
@@ -42,6 +43,7 @@ const MyClassUpdate = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    reset();
                 }
             })
 
@@ -63,7 +65,7 @@ const MyClassUpdate = () => {
                     <form onSubmit={handleSubmit(onSubmit)}>
 
                         <label className='block my-2 ml-2'>Class Name : </label>
-                        <input   {...register("className")} type="text" name='className' placeholder="Class Name" className="input input-bordered w-full " />
+                        <input   {...register("className", { required: true })} type="text" name='className' placeholder="Class Name" className="input input-bordered w-full " />
 
 
                         <label className='block my-2 ml-2'>Instructor Name : </label>
@@ -74,11 +76,11 @@ const MyClassUpdate = () => {
 
 
                         <label className='block my-2 ml-2'>Available Seats : </label>
-                        <input  {...register("seats")} type="number" name='seats' placeholder="Available Seats" className="input input-bordered w-full " />
+                        <input  {...register("seats", { required: true })} type="number" name='seats' placeholder="Available Seats" className="input input-bordered w-full " />
 
 
                         <label className='block my-2 ml-2'>Price : </label>
-                        <input {...register("price")} type="number" name='price' placeholder="Price" className="input input-bordered w-full " />
+                        <input {...register("price", { required: true })} type="number" name='price' placeholder="Price" className="input input-bordered w-full " />
 
 
                         <button className='btn btn-block mt-2'>Update</button>

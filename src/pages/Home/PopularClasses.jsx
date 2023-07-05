@@ -13,7 +13,7 @@ const PopularClasses = () => {
         getData();
     }, [])
 
-    console.log(classes)
+    // console.log(classes)
 
     return (
         <div>
