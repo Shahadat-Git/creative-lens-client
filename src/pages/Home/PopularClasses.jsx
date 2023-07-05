@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { motion } from "framer-motion";
 
 const PopularClasses = () => {
     const [classes, setClasses] = useState([]);
@@ -23,12 +24,13 @@ const PopularClasses = () => {
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 px-5 my-10'>
                 {
                     classes?.length > 0 && classes.map(item => <div key={item._id}>
+                        <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }} />
                         <div className="card w-full shadow-xl">
-                            <div className="p-10">
-                                <div style={{ background: `url(${item.img})`,backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }} className=" rounded-xl  h-72 w-full relative shadow">
+                            <motion.div whileHover={{ scale: 1.1 }} className="p-10">
+                                <div style={{ background: `url(${item.img})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }} className=" rounded-xl  h-72 w-full relative shadow">
                                     <h2 className='bg-neutral text-white absolute w-full bottom-5 text-center text-lg'>{item?.name}</h2>
                                 </div>
-                            </div>
+                            </motion.div>
 
                         </div>
                     </div>)

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { motion } from "framer-motion";
 
 const PopularInstructor = () => {
     const [instructors, setInstructors] = useState([]);
@@ -23,19 +24,19 @@ const PopularInstructor = () => {
                 {
                     instructors?.length > 0 && instructors.map(item => <div key={item._id}>
                         <div className="card w-full shadow-xl">
-                            <div className="p-10">
+                            <motion.div whileHover={{ scale: 1.1 }} className="p-10">
                                 <div style={{ background: `url(${item.img})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }} className=" rounded-xl  h-72 w-full relative shadow">
                                     <h2 className='bg-neutral text-white absolute w-full bottom-14 text-center text-lg'>{item?.name}</h2>
                                     <h2 className='bg-neutral text-white absolute w-full bottom-5 text-center text-lg'>Students :  {item?.students ? item?.students : "0"}</h2>
                                 </div>
-                            </div>
+                            </motion.div>
 
                         </div>
                     </div>)
                 }
             </div>
 
-        </div>
+        </div >
     );
 };
 
