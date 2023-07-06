@@ -31,7 +31,7 @@ const Instructors = () => {
                     instructors.length > 0 && instructors.map(item => <div key={item._id}>
                         <div className="w-full bg-base-100 shadow-xl lg:flex rounded items-center justify-center">
                             <div className="p-5 lg:w-4/12  shadow-lg ">
-                                <img className='w-full rounded-xl' src={item.img || noImg} />
+                                <img className='w-full rounded-xl h-[200px] lg:h-32' src={item.img || noImg} />
                             </div>
                             <div className="card-body lg:w-8/12 ">
                                 <p className="text-md font-semibold flex items-center gap-2 flex-wrap"><FaUserAlt></FaUserAlt> {item.name}</p>

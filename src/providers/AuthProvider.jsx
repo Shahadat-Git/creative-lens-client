@@ -41,12 +41,12 @@ const AuthProvider = ({ children }) => {
     // auth state observer
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
-            console.log('auth state changed', loggedUser)
+            // console.log('auth state changed', loggedUser)
             setUser(loggedUser)
             setLoading(false);
             if (loggedUser && loggedUser?.email) {
 
-                axios.post('http://localhost:5000/jwt', { email: loggedUser.email })
+                axios.post('https://creative-lens-school-server.vercel.app/jwt', { email: loggedUser.email })
                     .then(data => {
                         // console.log(data)
                         if (data?.data?.token) {

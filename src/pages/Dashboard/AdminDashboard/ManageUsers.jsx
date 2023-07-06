@@ -9,10 +9,10 @@ import { Helmet } from 'react-helmet-async';
 const ManageUsers = () => {
     const { user } = useAuth();
     const [axiosSecure] = useAxiosSecure();
-    const { data: users = [], refetch } = useQuery({
+    const { data: users = null, refetch, isLoading } = useQuery({
         queryKey: ['email', user.email],
         queryFn: async () => {
-            const res = await axiosSecure('/users')
+            const res = await axiosSecure.get('/users')
             return res.data;
         }
     })
@@ -62,7 +62,7 @@ const ManageUsers = () => {
             </div>
             <div className="overflow-x-auto mt-4">
                 {
-                    users.length > 0 ? <table className="table">
+                    !users ? "Loading..." : users.length > 0 ? <table className="table">
                         <thead>
                             <tr>
                                 <th>Image</th>
@@ -73,7 +73,7 @@ const ManageUsers = () => {
                         </thead>
                         <tbody>
                             {
-                                users.map(item => <tr key={item._id}>
+                                !isLoading && users.length > 0 && users.map(item => <tr key={item._id}>
                                     <td>
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">

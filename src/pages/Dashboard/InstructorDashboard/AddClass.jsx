@@ -11,6 +11,7 @@ const AddClass = () => {
         register,
         handleSubmit,
         watch,
+        reset,
         formState: { errors },
     } = useForm();
     const { user } = useAuth();
@@ -50,7 +51,8 @@ const AddClass = () => {
                                     'Good job!',
                                     'Class Successfully added',
                                     'success'
-                                )
+                                );
+                                reset();
                             }
                         })
 

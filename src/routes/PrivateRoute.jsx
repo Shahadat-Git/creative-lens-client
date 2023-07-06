@@ -5,7 +5,6 @@ import Spinner from '../components/Spinner';
 
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useAuth();
-    const location = useLocation();
 
     if (loading) {
         return <Spinner></Spinner>
@@ -15,7 +14,7 @@ const PrivateRoute = ({ children }) => {
         return children;
     }
 
-    return <Navigate state={{ from: location }} to='/login'></Navigate>
+    return <Navigate to='/login'></Navigate>
 };
 
 export default PrivateRoute;

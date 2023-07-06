@@ -7,7 +7,7 @@ const PopularInstructor = () => {
     const [axiosSecure] = useAxiosSecure();
     useEffect(() => {
         const getData = async () => {
-            const res = await axiosSecure.get('/instructors')
+            const res = await axiosSecure.get('/instructors/popular')
             const { data } = res;
             setInstructors(data)
         }

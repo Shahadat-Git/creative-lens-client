@@ -1,7 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import useAuth from './useAuth';
-import axios from 'axios';
 import useAxiosSecure from './useAxiosSecure';
 
 const useUserStatus = () => {

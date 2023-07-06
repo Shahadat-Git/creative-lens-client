@@ -11,10 +11,10 @@ const ManageClasses = () => {
     const [axiosSecure] = useAxiosSecure();
     const [classId, setClassId] = useState(null);
     const [classData, setClassData] = useState(null);
-    const { data: classes = [], refetch } = useQuery({
-        queryKey: ['email', user.email],
+    const { data: classes = null, refetch, isLoading } = useQuery({
+        queryKey: ['classes', user.email],
         queryFn: async () => {
-            const res = await axiosSecure('/classes')
+            const res = await axiosSecure.get('/classes')
             return res.data;
         }
     })
@@ -54,15 +54,13 @@ const ManageClasses = () => {
             })
     }
 
-    const handleFeedback = (id) => {
+    const handleFeedback = async (id) => {
         setClassData('');
         // console.log(id)
         setClassId(id)
-        axiosSecure.get(`/class/${id}`)
-            .then(res => {
-                setClassData(res.data)
-            })
-        window.feedback_modal.showModal()
+        const res = await axiosSecure.get(`/class/${id}`);
+        setClassData(res.data);
+        window.feedback_modal.showModal();
 
     }
     const handleFeedbackModal = (event) => {
@@ -79,6 +77,7 @@ const ManageClasses = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    refetch();
                 }
             })
     }
@@ -92,9 +91,9 @@ const ManageClasses = () => {
             </div>
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 px-5 my-10'>
                 {
-                    classes.length > 0 ? classes.map(item => <div key={item._id}>
+                    !classes ? "Loading..." : classes.length > 0 ? classes.map(item => <div key={item._id}>
                         <div className="card w-full bg-base-100 shadow-xl">
-                            <div className="p-10">
+                            <div className="px-10 pt-10">
                                 <img src={item.img || noImg} className=" rounded-xl border-2 h-72 w-full object-cover" />
                             </div>
                             <div className="card-body ">
@@ -102,7 +101,7 @@ const ManageClasses = () => {
                                 <p className="text-md font-semibold"> Instructor name : {item.instructorName}</p>
                                 <p className="text-md font-semibold"> Instructor email : {item.instructorEmail}</p>
                                 <p className="text-md font-semibold"> Available seats : {item.seats}</p>
-                                <p className="text-md font-semibold"> Price : {item.price}</p>
+                                <p className="text-md font-semibold"> Price : ${item.price}</p>
                                 <p className='text-md font-semibold'>Status : <span className={item.status === 'pending' ? 'text-warning' : item.status === 'approved' ? 'text-success' : ' text-error'}>{item.status}</span> </p>
                                 <button onClick={() => handleApproved(item._id)} className='btn btn-success hover:bg-green-500' disabled={item.status !== 'pending' && true}>Approve</button>
                                 <button onClick={() => handleDenied(item._id)} className='btn btn-error hover:bg-red-500' disabled={item.status !== 'pending' && true}>Deny</button>
@@ -110,7 +109,7 @@ const ManageClasses = () => {
                             </div>
                         </div>
                     </div>)
-                    : <h3 className='text-center text-xl'>No Classes Found</h3>
+                        : <h3 className='text-center text-xl'>No Classes Found</h3>
                 }
             </div>
 
@@ -118,7 +117,7 @@ const ManageClasses = () => {
             <dialog id="feedback_modal" className="modal">
                 <form method="dialog" className="modal-box w-11/12 lg:w-8/12 max-w-5xl">
                     <div>
-                        <textarea defaultValue={classData?.feedback ? classData.feedback : ''} name='feedback' rows={5} className="textarea textarea-bordered w-full" placeholder="Feedback"></textarea>
+                        <textarea defaultValue={classData?.feedback ? classData?.feedback : ''} name='feedback' rows={5} className="textarea textarea-bordered w-full" placeholder="Feedback"></textarea>
                         <button onClick={handleFeedbackModal} className='btn btn-neutral mt-2'>Send</button>
                     </div>
                     <div className="modal-action">

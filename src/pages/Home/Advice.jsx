@@ -8,7 +8,7 @@ const Advice = () => {
             <div className='flex justify-center items-center'>
                 <h3 className='text-xl mt-5 lg:text-5xl shadow-lg inline-block px-10 py-1 lg:py-4 rounded-full'>Advice</h3>
             </div>
-            <div className='flex flex-col lg:flex-row items-center justify-center bg-base-200 rounded-md mt-5 py-10'>
+            <div className='flex flex-col lg:flex-row items-center justify-center bg-base-200 lg:rounded-md mt-5 py-10'>
                 <div className='lg:w-6/12'>
                     <Lottie animationData={adviceAnimation} loop={true} />
                 </div>
