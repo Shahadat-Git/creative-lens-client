@@ -8,24 +8,24 @@ Welcome to our Photography School.
 ## Features
 * Mobile Responsive
 * Dynamic Routes
-* All toys data loaded from api with database
-* Used dynamic gallery
-* Toast appears after crud operation
-* Used login and register system
-* Used private route , user can't visit without login
-* Added error page with error massage
-* Used Post, Update, Delete, Patch method 
-
-
+* Dashboard for student,admin,instructor
+* All data loaded form database
+* Authentication System
+* Payment system
+* Dark/Light mode
+* Lots of new things
 
 ## Used By
 
 This project is used by the following technology:
 
 - React Js
+- Express.js
 - Tailwind Css
 - Used React Icons
 - React hot toast
 - Sweet alert
 - Used mongodb
-- Used Express.js
+- Used Stripe
+- Used Firebase
+- Etc
